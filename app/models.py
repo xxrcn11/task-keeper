@@ -33,4 +33,5 @@ class Task(Base):
 
     # 기본 lazy 로딩(select). 목록을 만든 뒤 task마다 task.tags에 접근하면
     # 태그 조회 쿼리가 task 개수만큼 따로 실행됩니다(N+1).
+    # 목록 조회는 list_tasks()에서 selectinload로 덮어씁니다.
     tags = relationship("Tag", secondary=task_tags, lazy="select")
